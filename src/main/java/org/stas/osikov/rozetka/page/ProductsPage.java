@@ -2,7 +2,6 @@ package org.stas.osikov.rozetka.page;
 
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Step;
 import lombok.SneakyThrows;
 import org.openqa.selenium.By;
@@ -26,7 +25,6 @@ public class ProductsPage extends MainPage {
     @SneakyThrows
     @Step
     public ProductsPage waitForProducts(){
-        Selenide.sleep(3000);
         try {
             productsList.shouldBe(CollectionCondition.sizeGreaterThan(0));
         }
