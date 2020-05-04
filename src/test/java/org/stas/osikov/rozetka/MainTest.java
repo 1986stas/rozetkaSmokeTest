@@ -26,7 +26,7 @@ public class MainTest {
     SearchPage searchPage;
 
     @BeforeAll
-    static void openPage() {
+    static void setUp() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().
                 screenshots(true).savePageSource(false));
         Browser.getInstance();
