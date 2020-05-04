@@ -1,8 +1,6 @@
 package org.stas.osikov.rozetka;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -24,13 +22,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ProductSearchTest extends MainTest {
 
     @Execution(ExecutionMode.CONCURRENT)
+    @Severity(SeverityLevel.NORMAL)
     @ParameterizedTest
     @Description("In this test we're checking that a user can search for a product and see it on a result page")
     @MethodSource("getProductName")
     void productShouldBeDisplayed(Product product){
         searchPage.openSearchPage();
-        assertAll("Content is displayed", () ->
-                assertTrue(searchPage.isSearchButtonDisplayed(), "Search button is not displayed"),
+        assertAll("Content is displayed",
+                () -> assertTrue(searchPage.isSearchButtonDisplayed(), "Search button is not displayed"),
                 () -> assertTrue(searchPage.isSearchFieldDisplayed(), "Search field is not displayed")
         );
         searchPage.writeTextToSearchField(product).
